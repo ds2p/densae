@@ -13,6 +13,7 @@ import numpy as np
 
 import utils
 
+
 def train_ae(
     net,
     data_loader,
@@ -68,8 +69,6 @@ def train_ae(
                         img_test_noisy[0, 0, :, :].clone().detach().cpu().numpy(),
                     )
 
-                    break
-
             writer.add_scalar("test_psnr", np.mean(np.array(psnr)), 0)
             print("PSNR: {}".format(np.round(np.mean(np.array(psnr)), decimals=4)))
 
@@ -103,7 +102,6 @@ def train_ae(
 
             torch.cuda.empty_cache()
 
-            break
         writer.add_scalar("training_loss", loss_all, epoch + 1)
 
         if denoising:
@@ -132,7 +130,6 @@ def train_ae(
 
                         psnr.append(psnr_i / N)
 
-                        break
                 writer.add_scalar("test_psnr", np.mean(np.array(psnr)), epoch + 1)
                 print(
                     "epoch {}: PSNR {}".format(
