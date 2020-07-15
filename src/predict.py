@@ -179,17 +179,7 @@ def predict():
 
             img_hat, r = net(img_noisy)
 
-            magnitude_spectrum_img = 20*np.log10(np.abs(np.fft.fftshift(np.fft.fft2(img.clone().detach().cpu().numpy()))))
-            magnitude_spectrum_img =  torch.from_numpy(magnitude_spectrum_img).float()
-            magnitude_spectrum_img_hat = 20*np.log10(np.abs(np.fft.fftshift(np.fft.fft2(img_hat.clone().detach().cpu().numpy()))))
-            magnitude_spectrum_img_hat =  torch.from_numpy(magnitude_spectrum_img_hat).float().to(device)
 
-            torchvision.utils.save_image(
-                magnitude_spectrum_img.clone(), os.path.join(PATH, "{}_img_spec.png".format(img_list[ctr])),
-            )
-            torchvision.utils.save_image(
-                magnitude_spectrum_img_hat.clone(), os.path.join(PATH, "{}_img_hat_spec.png".format(img_list[ctr])),
-            )
             torchvision.utils.save_image(
                 img.clone(), os.path.join(PATH, "{}_img.png".format(img_list[ctr])),
             )
@@ -206,17 +196,6 @@ def predict():
                 ax_hat = r[-1]
                 bu_hat = r[-2]
 
-                magnitude_spectrum_ax_hat = 20*np.log10(np.abs(np.fft.fftshift(np.fft.fft2(ax_hat.clone().detach().cpu().numpy()))))
-                magnitude_spectrum_ax_hat =  torch.from_numpy(magnitude_spectrum_ax_hat).float()
-                magnitude_spectrum_bu_hat = 20*np.log10(np.abs(np.fft.fftshift(np.fft.fft2(bu_hat.clone().detach().cpu().numpy()))))
-                magnitude_spectrum_bu_hat =  torch.from_numpy(magnitude_spectrum_bu_hat).float()
-
-                torchvision.utils.save_image(
-                    magnitude_spectrum_ax_hat.clone(), os.path.join(PATH, "{}_ax_hat_spec.png".format(img_list[ctr])),
-                )
-                torchvision.utils.save_image(
-                    magnitude_spectrum_bu_hat.clone(), os.path.join(PATH, "{}_bu_hat_hat_spec.png".format(img_list[ctr])),
-                )
                 torchvision.utils.save_image(
                     ax_hat.clone(),
                     os.path.join(PATH, "{}_ax_hat.png".format(img_list[ctr])),
