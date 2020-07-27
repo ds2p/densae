@@ -1,3 +1,3 @@
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+# Visit https://github.com/btolooshams/densae for code.
 
-# DenSaE (dense and sparse auto-encoder)
+## DenSaE (dense and sparse auto-encoder)
